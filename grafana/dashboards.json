@@ -43,6 +43,61 @@
         }
       ],
       "gridPos": { "x": 0, "y": 6, "w": 6, "h": 6 }
+    },
+    {
+      "type": "gauge",
+      "title": "Process Count",
+      "targets": [
+        {
+          "expr": "system_process_count",
+          "format": "time_series"
+        }
+      ],
+      "gridPos": { "x": 6, "y": 6, "w": 6, "h": 6 }
+    },
+    {
+      "type": "gauge",
+      "title": "Thread Count",
+      "targets": [
+        {
+          "expr": "system_thread_count",
+          "format": "time_series"
+        }
+      ],
+      "gridPos": { "x": 0, "y": 12, "w": 6, "h": 6 }
+    },
+    {
+      "type": "stat",
+      "title": "System Uptime (s)",
+      "targets": [
+        {
+          "expr": "system_uptime_seconds",
+          "format": "time_series"
+        }
+      ],
+      "gridPos": { "x": 6, "y": 12, "w": 6, "h": 6 }
+    },
+    {
+      "type": "stat",
+      "title": "Network Bytes Sent",
+      "targets": [
+        {
+          "expr": "network_bytes_sent_total",
+          "format": "time_series"
+        }
+      ],
+      "gridPos": { "x": 0, "y": 18, "w": 6, "h": 6 }
+    },
+    {
+      "type": "stat",
+      "title": "Network Bytes Received",
+      "targets": [
+        {
+          "expr": "network_bytes_received_total",
+          "format": "time_series"
+        }
+      ],
+      "gridPos": { "x": 6, "y": 18, "w": 6, "h": 6 }
     }
   ]
 }
