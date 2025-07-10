@@ -1,6 +1,7 @@
 import cProfile
 import pstats
 import io
+import logging
 
 def profile_sample_function():
     def some_heavy_function():
@@ -9,12 +10,20 @@ def profile_sample_function():
             total += i * i
         return total
 
-    profiler = cProfile.Profile()
-    profiler.enable()
-    some_heavy_function()
-    profiler.disable()
+    try:
+        profiler = cProfile.Profile()
+        profiler.enable()
+        some_heavy_function()
+        profiler.disable()
+    except Exception as e:
+        logging.error(f"Error durante el perfilado de la función: {e}")
+        return {"profile": "Error durante la ejecución del perfilado."}
 
-    s = io.StringIO()
-    ps = pstats.Stats(profiler, stream=s).sort_stats('cumulative')
-    ps.print_stats(10)
-    return {"profile": s.getvalue()}
+    try:
+        s = io.StringIO()
+        ps = pstats.Stats(profiler, stream=s).sort_stats('cumulative')
+        ps.print_stats(10)
+        return {"profile": s.getvalue()}
+    except Exception as e:
+        logging.error(f"Error al procesar estadísticas del perfilador: {e}")
+        return {"profile": "Error al procesar las estadísticas del perfilador."}
