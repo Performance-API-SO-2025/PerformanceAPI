@@ -10,7 +10,7 @@
 ## Video
 https://youtu.be/czDRhuk4LYw
 
-##instaladores
+## Instaladores
 https://drive.google.com/drive/folders/14CrkRh-kaXsW-5RJXbu6AM-cJ3KBorgO?usp=sharing
 https://www.python.org/downloads/
 
