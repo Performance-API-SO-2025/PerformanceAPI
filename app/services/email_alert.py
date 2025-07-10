@@ -11,7 +11,7 @@ EMAIL_RECEIVER = "jesteban.aristizabal@udea.edu.co"
 def enviar_alerta(asunto, cuerpo):
     print(f"Enviando correo de alerta: {EMAIL_ADDRESS} -> {EMAIL_RECEIVER} password: {EMAIL_PASSWORD}")
     try:
-        msg = EmailMessage()
+        msg = EmailMessage() 
         msg["Subject"] = asunto
         msg["From"] = EMAIL_ADDRESS
         msg["To"] = EMAIL_RECEIVER

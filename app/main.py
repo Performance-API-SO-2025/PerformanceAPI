@@ -12,7 +12,7 @@ logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
 )
-
+# Crea instancia de FastAPI
 app = FastAPI(title="Performance API")
 app.include_router(metrics.router)
 app.include_router(profiling.router)
@@ -28,6 +28,7 @@ estado_alertas = {
     "disco": False
 }
 
+# Función que revisa el uso de un recurso y envía alerta si supera el umbral.
 def verificar_y_alertar(nombre, obtener_valor_func, extraer_percent=False, umbral=80):
     try:
         valor = obtener_valor_func()
@@ -44,6 +45,7 @@ def verificar_y_alertar(nombre, obtener_valor_func, extraer_percent=False, umbra
     except Exception as e:
         logging.error(f"Error en {nombre}: {e}")
 
+# Bucle que actualiza métricas y verifica alertas cada 5 segundos.
 def actualizar_metricas():
     while True:
         verificar_y_alertar("cpu", cpu_monitor.get_cpu_percent)
@@ -57,5 +59,5 @@ def actualizar_metricas():
 
         time.sleep(5)
 
-# Iniciar hilo en segundo plano
+# Inicia el bucle en un hilo en segundo plano sin bloquear la API.
 threading.Thread(target=actualizar_metricas, daemon=True).start()
