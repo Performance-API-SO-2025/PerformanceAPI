@@ -5,6 +5,7 @@ import logging
 # Crear la métrica
 cpu_usage_percent = Gauge("cpu_usage_percent", "Uso de CPU en porcentaje")
 
+# Función para obtener el uso de CPU en porcentaje.
 def get_cpu_percent():
     try:
         value = psutil.cpu_percent(interval=1)

@@ -4,6 +4,7 @@ import logging
 
 router = APIRouter(prefix="/metrics", tags=["Metrics"])
 
+# Endpoint para obtener el uso de CPU en porcentaje
 @router.get("/cpu")
 def get_cpu():
     try:
@@ -12,6 +13,7 @@ def get_cpu():
         logging.error(f"Error al obtener uso de CPU: {e}")
         raise HTTPException(status_code=500, detail="No se pudo obtener el uso de CPU")
 
+# Endpoint para obtener el uso de memoria (RAM)
 @router.get("/memory")
 def get_memory():
     try:
@@ -20,6 +22,7 @@ def get_memory():
         logging.error(f"Error al obtener uso de memoria: {e}")
         raise HTTPException(status_code=500, detail="No se pudo obtener el uso de memoria")
 
+# Endpoint para obtener el uso de disco
 @router.get("/disk")
 def get_disk():
     try:
