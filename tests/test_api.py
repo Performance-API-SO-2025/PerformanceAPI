@@ -52,4 +52,4 @@ def test_profiling_function():
     data = response.json()
     assert "profile" in data
     assert isinstance(data["profile"], str)
-    assert "function calls" in data["profile"]
+    assert "function calls" in data["profile"]
